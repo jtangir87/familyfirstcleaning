@@ -302,7 +302,7 @@
         <div class="text-center">
           <h3>Get Your Free Quote</h3>
           <p>We will come see the location you would like serviced and provide you an estimate based on the frequency of cleaning.</p>
-          <form method="POST" action="{% url 'quote_request' %}">
+          <form method="POST" action="{% url 'quote_request' %}" id="quoteForm">
             {% csrf_token %}
             {% bootstrap_form_errors form %}
             <div class="row">
@@ -316,7 +316,11 @@
                 {% bootstrap_field form.phone show_label=False  %}
               </div>
             </div>
-            <button class="cta-btn" type="submit">Get Your Free Quote</button>
+            <button class="cta-btn g-recaptcha" 
+              data-sitekey="6LcYqxYaAAAAAG5tgCAOOrCMLOdbNlPxWMWvUk4S" 
+              data-callback='onSubmit' 
+              data-action='submit'            
+              type="submit">Get Your Free Quote</button>
           </form>
         </div>
       </div>
@@ -448,3 +452,14 @@
   </main><!-- End #main -->
 
 {% endblock content %}
+
+{% block footscript %}
+ <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script>
+   function onSubmit(token) {
+     document.getElementById("quoteForm").submit();
+   }
+ </script>
+{% endblock footscript %}
+
+
