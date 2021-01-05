@@ -316,11 +316,12 @@
                 {% bootstrap_field form.phone show_label=False  %}
               </div>
             </div>
-            <button class="cta-btn g-recaptcha" 
+            {% comment %} <button class="cta-btn g-recaptcha" 
               data-sitekey="6LcYqxYaAAAAAG5tgCAOOrCMLOdbNlPxWMWvUk4S" 
               data-callback='onSubmit' 
               data-action='submit'            
-              type="submit">Get Your Free Quote</button>
+              type="submit">Get Your Free Quote</button> {% endcomment %}
+              <button class="cta-btn" type="submit">Get Your Free Quote</button>
           </form>
         </div>
       </div>
@@ -440,11 +441,12 @@
                 <textarea class="form-control" name="message" id="message" rows="5" data-rule="required" data-msg="How can we help you?" placeholder="Message"></textarea>
               </div>
               <div class="text-center">
-                <button class="cta-btn g-recaptcha" 
+                {% comment %} <button class="cta-btn" g-recaptcha" 
                   data-sitekey="6LcYqxYaAAAAAG5tgCAOOrCMLOdbNlPxWMWvUk4S" 
                   data-callback='onSubmit' 
-                  data-action='submit'            
-                  type="submit">Send Message</button>
+                  data-action='submit' "           
+                  type="submit">Send Message</button> {% endcomment %}
+                  <button class="cta-btn" type="submit">Send Message</button> 
               </div>
             </form>
 
@@ -460,7 +462,7 @@
 {% endblock content %}
 
 {% block footscript %}
- <script src="https://www.google.com/recaptcha/api.js"></script>
+ {% comment %} <script src="https://www.google.com/recaptcha/api.js"></script>
   <script>
    function onSubmit(token) {
      document.getElementById("quoteForm").submit();
@@ -468,7 +470,7 @@
    function onSubmit(token) {
      document.getElementById("contactForm").submit();
    };
- </script>
+ </script> {% endcomment %}
 {% endblock footscript %}
 
 
